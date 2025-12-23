@@ -2,6 +2,10 @@
 Seguir las instrucciones para instalar mkcert en su dispositivo.
 [text](https://github.com/FiloSottile/mkcert)
 
+# Después de realizar la instalación es necesario instalar los certificados de confianza en el dispositivo.
+
+mkcert -install
+
 # Ejecutar el comando dentro de la carpeta /certs
 mkcert mydomain.local
 
