@@ -1,0 +1,2 @@
+# Configuración de SSL
+Para agregar el certificado de cada sitio web, es necesario crear un archivo por sitio web "site.yml" donde indicarás donde se puede encontrar el certificado dentro del contenedor de traefik, asegurate de montar la carpeta de tu espacio de trabajo el el archivo "compose.yml".

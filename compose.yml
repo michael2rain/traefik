@@ -1,29 +1,40 @@
 services:
   traefik:
     image: traefik:v3.6
-    container_name: traefik-global
+    container_name: traefik
     restart: unless-stopped
+
     command:
       - "--api.dashboard=false"
       - "--api.insecure=true"
-      # Enable DEBUG level logging
       - "--log.level=DEBUG"
-      # Enable Docker and File providers
+
+      # Provider Docker
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.file.directory=/certs"
       - "--providers.docker.network=traefik"
+
+      # Provider File ./dynamic_conf
+      - "--providers.file.directory=/etc/traefik/dynamic"
+      - "--providers.file.watch=true"
+
+      # Entrypoints
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+
     ports:
       - "80:80"
       - "443:443"
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./certs:/certs:ro
+      # Montaje de carpeta raiz
+      - ${WORKSPACE_ROOT}:/var/projects_root:ro
+      # Configuración dinámica
+      - ./dynamic_conf:/etc/traefik/dynamic:ro
+
     networks:
       - traefik
 

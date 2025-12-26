@@ -1,2 +1,4 @@
-certs/*
-!certs/README.md
+.env
+
+dynamic_conf/*
+!dynamic_conf/README.md
