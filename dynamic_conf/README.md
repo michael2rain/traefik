@@ -6,7 +6,7 @@ Para agregar el certificado de cada sitio web, es necesario crear un archivo por
 # --- SECCIÓN 1: CERTIFICADOS SSL ---
 tls:
   certificates:
-    - certFile: /var/projects_root/mbarrera/ssl/_wildcard.mysite.local.pem
+    - certFile: /var/projects_root/mysite/ssl/_wildcard.mysite.local.pem
       keyFile: /var/projects_root/mysite/ssl/_wildcard.mysite.local-key.pem
 
 # --- SECCIÓN 2: Middlewares ---
